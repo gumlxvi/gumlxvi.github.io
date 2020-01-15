@@ -132,6 +132,10 @@ let Render = {
     coucon.after(statsDiv);
   },
   globalStats() {
+    document.querySelectorAll('#stacon > .stats').forEach((item) => {
+      item.remove();
+    });
+    
     stats.forEach((v, i) => {
       let globalStatsDiv = document.createElement('div');
       globalStatsDiv.classList.add('stats');
@@ -184,10 +188,6 @@ let Render = {
         cell.dataset.dayIndex = dayIndex;
 
         grid.append(cell);
-      });
-
-      document.querySelectorAll('#stacon > .stats').forEach((item) => {
-        item.remove();
       });
 
       globalStatsDiv.append(grid);
