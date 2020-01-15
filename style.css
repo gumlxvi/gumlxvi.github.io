@@ -1,0 +1,257 @@
+html {
+  height: 100%;
+}
+
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+  background-color: #BCCCE0;
+  font-family: 'Montserrat', sans-serif;
+}
+
+button {
+  font-family: inherit;
+}
+
+/* Header */
+header {
+  height: 50px;
+  width: 100%;
+  background-color: #13262F;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 10px #13262F;
+}
+
+header > button, header > label {
+  background: none;
+  border: none;
+  outline: none;
+  color: white;
+  font-size: 16px;
+  margin: 0 20px;
+  cursor: pointer;
+}
+
+header > button:active, header > label:active {
+  color: #D6D6D6;
+}
+
+/* Main */
+main {
+  margin: 25px auto;
+  min-width: 800px;
+  max-width: 1280px;
+  height: 650px;
+  transition: height 1s;
+  display: flex;
+}
+
+main > * {
+  box-shadow: 0 0 10px #13262F;
+}
+
+#current {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  margin-right: 25px;
+  background-color: #13262F;
+}
+
+#global {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  background-color: #13262F;
+}
+
+/* Current */
+#coucon {
+  height: 50px;
+  display: flex;
+}
+
+#coucon > * {
+  font-size: 16px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#coucon > span {
+  background-color: #E9E6FF;
+  flex: 1;
+}
+
+#coucon > button {
+  background-color: #DAD7F1;
+  border: none;
+  outline: none;
+  flex: 5;
+  cursor: pointer;
+}
+
+#coucon > button:hover {
+  filter: brightness(0.9);
+}
+
+#coucon > button:active {
+  filter: brightness(0.85);
+}
+
+#coucon > button.shine {
+  animation: shine 5s infinite;
+}
+
+@keyframes shine {
+  0% {
+    filter: brightness(1);
+  }
+  50% {
+    filter: brightness(1.25);
+  }
+  0% {
+    filter: brightness(1);
+  }
+} 
+
+.description {
+  margin-top: 25px;
+  height: 0px;
+  transition: height 1s cubic-bezier(0.23, 1, 0.32, 1);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.description textarea {
+  resize: none;
+  outline: none;
+  height: 100px;
+  font-family: inherit;
+}
+
+/* Global */
+#global > h2 {
+  display: flex;
+  width: 100%;
+  min-height: 50px;
+  background-color: #E9E6FF;
+  margin: 0;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+}
+
+.grid {
+  margin-top: 10px;
+}
+
+.grid > span {
+  border: 1px solid white;
+  width: 15px;
+  height: 15px;
+  display: inline-block;
+  transition: border 0.5s;
+  margin: 2px;
+  cursor: pointer;
+}
+
+#global > div {
+  flex: 1;
+  overflow: hidden;
+  display: flex;
+}
+
+#stacon {
+  flex: 1;
+}
+
+#chocon {
+  width: 0px;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  float: right;
+  position: relative;
+  right: -20px;
+  transition: width 1s;
+  scroll-behavior: smooth;
+  background: #DAD7F1;
+  padding: 0 10px;
+  white-space: nowrap;
+}
+
+#chocon > ol {
+  list-style: upper-roman;
+}
+
+#chocon > ol > li {
+  margin: 15px 0;
+}
+
+#chocon > ol > li:first-child {
+  margin-top: 0;
+}
+
+#chocon > ol > li:last-child {
+  margin-bottom: 0;
+}
+
+/* Other */
+.stats, .description {
+  padding: 0 10px;
+  font-size: 16px;
+  color: white;
+}
+
+.stats > h3, #chocon > h3 {
+  font-size: 22px;
+  margin: 10px 0 5px;
+}
+
+.stats > p {
+  margin: 5px 0;
+}
+
+input[type='file'] {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  position: absolute;
+  z-index: -1;
+}
+
+.hint, .sequenceActivated {
+  border: 1px solid white;
+  opacity: 0.75;
+}
+
+.hint {
+  background: #DAD7F1;
+  position: absolute;
+  padding: 10px 2px;
+}
+
+.sequenceActivated {
+  position: absolute;
+  color: white;
+  background-color: #13262F;
+  bottom: 50px;
+  left: -1000px;
+  transition: left 2s, opacity 2s;
+  padding: 15px 10px;
+}
+
+@keyframes shrooms {
+  from {
+    filter: hue-rotate(0deg);
+  }
+  to {
+    filter: hue-rotate(360deg);
+  }
+}
