@@ -183,6 +183,9 @@ main > * {
   scroll-behavior: smooth;
   background: #DAD7F1;
   padding: 0 10px;
+}
+
+#chocon > h3 {
   white-space: nowrap;
 }
 
