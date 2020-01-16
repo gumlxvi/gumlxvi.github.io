@@ -183,6 +183,7 @@ main > * {
   scroll-behavior: smooth;
   background: #DAD7F1;
   padding: 0 10px;
+  word-wrap: break-word;
 }
 
 #chocon > h3 {

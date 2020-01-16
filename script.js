@@ -169,9 +169,9 @@ let Render = {
           case 1:
           case 2:
           case 3:
-          case 4:
             cell.style.backgroundColor = LIGHT_GREEN;
             break;
+          case 4:
           case 5:
           case 6:
           case 7:
@@ -286,6 +286,7 @@ button.addEventListener('click', () => {
   const possibleDescription = document.querySelector('.description textarea');
   if (possibleDescription && possibleDescription.value) {
     descriptionFor.description = possibleDescription.value;
+    Sync.save();
 
     document.querySelector('.description').style.height = '0px';
     setTimeout(() => document.querySelector('.description').remove(), 1000);
@@ -361,6 +362,8 @@ button.addEventListener('click', () => {
         descriptionDiv.querySelector('textarea').addEventListener('keydown', (e) => {
           if  (!e.shiftKey && e.code == 'Enter') {
             descriptionFor.description = e.target.value;
+            Sync.save();
+            
             document.querySelector('.description').style.height = '0px';
             setTimeout(() => document.querySelector('.description').remove(), 1000);
             e.preventDefault();
