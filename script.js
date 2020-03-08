@@ -288,6 +288,7 @@ Render.timer();
 Render.progress(GRAY);
 
 let alarm = new Audio('alarm.ogg');
+alarm.volume = volume;
 
 button.addEventListener('click', () => {
   button.style.boxShadow = '';
@@ -551,6 +552,7 @@ alarmChangeButton.addEventListener('click', () => {
   range.onchange = () => {
     volume = range.value;
     volumeSpan.innerText = volume * 100 + '%';
+    alarm.volume = volume;
     localStorage.setItem('volume', volume);
   }
 
