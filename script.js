@@ -47,12 +47,20 @@ let stats
   , counter
   , timer
   , tabTimer
-  , descriptionFor;
+  , descriptionFor
+  , volume;
 
 const button = document.querySelector('#coucon > button')
     , global = document.querySelector('#global')
     , coucon = document.querySelector('#coucon')
     , stacon = document.querySelector('#stacon');
+
+if (!localStorage.getItem('volume')) {
+  volume = 0.5;
+  localStorage.setItem('volume', 0.5);
+} else {
+  volume = +localStorage.getItem('volume');
+}
 
 if (!localStorage.getItem('stats')) {
   stats = [];
@@ -279,6 +287,8 @@ Render.globalStats();
 Render.timer();
 Render.progress(GRAY);
 
+let alarm = new Audio('alarm.ogg');
+
 button.addEventListener('click', () => {
   button.style.boxShadow = '';
   button.classList.remove('shine');
@@ -322,6 +332,7 @@ button.addEventListener('click', () => {
 
       if (!remains) {
         Render.tab('Session Completed!', true);
+        alarm.play();
 
         Sync.month();
 
@@ -515,6 +526,43 @@ importInput.addEventListener('change', () => {
   reader.onerror = () => {
     throw reader.error;
   };
+});
+
+alarmChangeButton.addEventListener('click', () => {
+  let modal = document.createElement('div');
+  modal.classList.add('audio-modal');
+
+  let heading = document.createElement('h2');
+  heading.innerText = 'Volume Control';
+  modal.append(heading);
+
+  let range = document.createElement('input');
+  range.type = 'range';
+  range.min = 0;
+  range.max = 1;
+  range.step = 0.1;
+  range.value = volume;
+  modal.append(range);
+
+  let volumeSpan = document.createElement('span');
+  volumeSpan.innerText = volume * 100 + '%';
+  modal.append(volumeSpan);
+  
+  range.onchange = () => {
+    volume = range.value;
+    volumeSpan.innerText = volume * 100 + '%';
+    localStorage.setItem('volume', volume);
+  }
+
+  function outerClickClose(e) {
+    if (!e.target.closest('.audio-modal')) {
+      document.querySelector('.audio-modal').remove();
+      document.body.removeEventListener('click', outerClickClose);
+    }
+  }
+
+  document.body.addEventListener('mousedown', outerClickClose);
+  document.body.append(modal);
 });
 
 let hintDelay;

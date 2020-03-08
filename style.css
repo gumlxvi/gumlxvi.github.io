@@ -259,3 +259,20 @@ input[type='file'] {
     filter: hue-rotate(360deg);
   }
 }
+
+.audio-modal {
+  position: absolute;
+  padding: 0 10px;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 500px;
+  height: 200px;
+  border: 1px solid white;
+  background: rgb(46, 81, 97);
+  color: white;
+}
+
+.audio-modal span {
+  margin-left: 10px;
+}
